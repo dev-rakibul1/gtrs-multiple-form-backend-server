@@ -1,12 +1,12 @@
-import { Schema, model } from "mongoose"
+import { Schema, model } from 'mongoose';
 import {
   judicialCountryArray,
   lastYearTotalTurnoverTypes,
   noOfStaffTypes,
   tradingCurrencyTypes,
   yearsClientTradingTypes,
-} from "./multiForm.constant"
-import { IMultipleForm, MultipleFormMethod } from "./multiForm.interface"
+} from './multiForm.constant';
+import { IMultipleForm, MultipleFormMethod } from './multiForm.interface';
 
 const userInfoSchema = new Schema<IMultipleForm, MultipleFormMethod>(
   {
@@ -361,10 +361,10 @@ const userInfoSchema = new Schema<IMultipleForm, MultipleFormMethod>(
       virtuals: true,
     },
   },
-)
+);
 
 const MultipleForm = model<IMultipleForm, MultipleFormMethod>(
-  "MultipleForm",
+  'MultipleForm',
   userInfoSchema,
-)
-export default MultipleForm
+);
+export default MultipleForm;
