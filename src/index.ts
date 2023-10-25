@@ -1,13 +1,15 @@
-import cors from "cors";
-import express, { NextFunction, Request, Response } from "express";
-import httpStatus from "http-status";
-import databaseConnect from "./utils/server";
-const app = express();
+import cors from "cors"
+import express, { NextFunction, Request, Response } from "express"
+import httpStatus from "http-status"
+import databaseConnect from "./utils/server"
+const app = express()
+
+const abc = "Hello"
 
 // middle were calling
-app.use(express.json());
-app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.use(cors())
+app.use(express.urlencoded({ extended: true }))
 
 // global error handling
 app.use("*", (req: Request, res: Response, next: NextFunction) => {
@@ -20,11 +22,11 @@ app.use("*", (req: Request, res: Response, next: NextFunction) => {
         message: "API not found!",
       },
     ],
-  });
-  next();
-});
+  })
+  next()
+})
 
 // database connected
-databaseConnect();
+databaseConnect()
 
-export default app;
+export default app
