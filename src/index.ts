@@ -4,8 +4,6 @@ import httpStatus from "http-status"
 import databaseConnect from "./utils/server"
 const app = express()
 
-const abc = "Hello"
-
 // middle were calling
 app.use(express.json())
 app.use(cors())
