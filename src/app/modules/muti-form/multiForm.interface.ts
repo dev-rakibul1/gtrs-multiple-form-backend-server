@@ -14,7 +14,7 @@ export type IMultipleForm = {
   emailAddress: string;
   address: string;
   judicialCountry: CountryType[];
-  officePhone: number;
+  officePhone: string;
   website?: string;
   socialId?: string;
   yearsTrading: IYearsClientTradingTypes[];

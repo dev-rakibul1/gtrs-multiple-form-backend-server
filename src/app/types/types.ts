@@ -232,3 +232,16 @@ export type CountryType =
   | 'yemen'
   | 'zambia'
   | 'zimbabwe';
+
+export type IGenericResponse<T> = {
+  meta: {
+    page?: number;
+    limit?: number;
+    total?: number;
+  };
+  data: T;
+};
+
+export type IMultipleFormFilters = {
+  searchTerm?: string | number;
+};

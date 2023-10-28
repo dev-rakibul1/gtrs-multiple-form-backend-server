@@ -39,7 +39,7 @@ const userInfoSchema = new Schema<IMultipleForm, MultipleFormMethod>(
       required: true,
     },
     officePhone: {
-      type: Number,
+      type: String,
       trim: true,
       required: true,
     },
