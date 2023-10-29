@@ -1,4 +1,4 @@
-import multipleFormRoutes from '../muti-form/multiForm.route';
+import { multipleFormRoute } from '../muti-form/multiForm.route';
 
 import express from 'express';
 const router = express.Router();
@@ -6,7 +6,7 @@ const router = express.Router();
 const moduleRouters = [
   {
     path: '/form-data',
-    routes: multipleFormRoutes,
+    routes: multipleFormRoute,
   },
 ];
 

@@ -2,20 +2,9 @@ import { SortOrder } from 'mongoose';
 import { IGenericResponse, IMultipleFormFilters } from '../../types/types';
 import { IPaginationOptionsTypes } from '../pagination/pagination';
 import { paginationHelper } from '../pagination/paginationHelper';
+import { multiFormSearchFiledName } from './multiForm.constant';
 import { IMultipleForm } from './multiForm.interface';
 import MultipleForm from './multiForm.model';
-
-const multiFormSearchFiledName = [
-  'judicialCountry',
-  'clientRegisteredName',
-  'emailAddress',
-  'officePhone',
-  'address',
-  'emergencyContactName',
-  'emergencyContactDesignation',
-  'emergencyContactEmail',
-  'emergencyContactPhone',
-];
 
 const getMultipleFormService = async (
   filters: IMultipleFormFilters,
@@ -25,25 +14,6 @@ const getMultipleFormService = async (
 
   console.log(filters);
   const andConditions = [];
-
-  // const andConditions = [
-  //   {
-  //     $or: [
-  //       {
-  //         clientRegisteredName: {
-  //           $regex: searchTerm,
-  //           $options: 'i',
-  //         },
-  //       },
-  //       {
-  //         emailAddress: {
-  //           $regex: searchTerm,
-  //           $options: 'i',
-  //         },
-  //       },
-  //     ],
-  //   },
-  // ];
 
   if (filters)
     if (searchTerm) {
@@ -101,7 +71,44 @@ const createMultipleFormService = async (
   return getFormData;
 };
 
+const getSingleMultipleFromUserService = async (
+  id: string,
+): Promise<IMultipleForm | null> => {
+  const getFormData = await MultipleForm.findById(id);
+  return getFormData;
+};
+
+const deleteSingleMultipleFromUserService = async (
+  id: string,
+): Promise<IMultipleForm | null> => {
+  const isExist = await MultipleForm.findById(id);
+
+  if (!isExist) {
+    throw new Error('Entry not found');
+  }
+  const getFormData = await MultipleForm.findByIdAndDelete(id);
+  return getFormData;
+};
+
+const updateSingleMultipleFromUserService = async (
+  id: string,
+  payload: IMultipleForm,
+): Promise<IMultipleForm | null> => {
+  const isExist = await MultipleForm.findById(id);
+
+  if (!isExist) {
+    throw new Error('Data not found');
+  }
+  const getFormData = await MultipleForm.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
+  return getFormData;
+};
+
 export const multipleFormService = {
   getMultipleFormService,
   createMultipleFormService,
+  getSingleMultipleFromUserService,
+  deleteSingleMultipleFromUserService,
+  updateSingleMultipleFromUserService,
 };
