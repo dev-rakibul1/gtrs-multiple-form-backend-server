@@ -46,7 +46,68 @@ const createMultipleFromUser = tryCatchAsync(
   },
 );
 
+// get single user data
+const getSingleMultipleFromUser = tryCatchAsync(
+  async (req: Request, res: Response) => {
+    const getSingleUser = req.params.id;
+    console.log(getSingleUser);
+
+    const getFormUser =
+      await multipleFormService.getSingleMultipleFromUserService(getSingleUser);
+
+    requestResponseSend<IMultipleForm>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Single entry get success!',
+      data: getFormUser,
+    });
+  },
+);
+
+// Delete single user data
+const deleteSingleMultipleFromUser = tryCatchAsync(
+  async (req: Request, res: Response) => {
+    const getSingleUser = req.params.id;
+
+    const getFormUser =
+      await multipleFormService.deleteSingleMultipleFromUserService(
+        getSingleUser,
+      );
+
+    requestResponseSend<IMultipleForm>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Single data delete success!',
+      data: getFormUser,
+    });
+  },
+);
+
+// update single user data
+const updateSingleMultipleFromUser = tryCatchAsync(
+  async (req: Request, res: Response) => {
+    const getUpdateEntry = req.body;
+    const getSingleUser = req.params.id;
+
+    const getFormUser =
+      await multipleFormService.updateSingleMultipleFromUserService(
+        getSingleUser,
+        getUpdateEntry,
+      );
+
+    requestResponseSend<IMultipleForm>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Single entry update success!',
+      data: getFormUser,
+    });
+  },
+);
+
 export const multipleFormController = {
   getMultipleFromUser,
   createMultipleFromUser,
+  getSingleMultipleFromUser,
+  deleteSingleMultipleFromUser,
+  updateSingleMultipleFromUser,
 };

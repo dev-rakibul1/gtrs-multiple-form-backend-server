@@ -245,3 +245,15 @@ export const judicialCountryArray: CountryType[] = [
   'zambia',
   'zimbabwe',
 ];
+
+export const multiFormSearchFiledName = [
+  'judicialCountry',
+  'clientRegisteredName',
+  'emailAddress',
+  'officePhone',
+  'address',
+  'emergencyContactName',
+  'emergencyContactDesignation',
+  'emergencyContactEmail',
+  'emergencyContactPhone',
+];
