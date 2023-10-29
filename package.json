@@ -14,7 +14,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "ts-node-dev --transpile-only src/index.ts",
+    "local-start": "ts-node-dev --respawn --transpile-only server.ts",
+    "main": "dist/index.js",
+    "start": "node dist/index.js",
     "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "lint-fix": "eslint --fix",
     "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
