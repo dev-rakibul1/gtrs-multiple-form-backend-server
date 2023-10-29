@@ -9,7 +9,7 @@ const multiFormSearchFiledName = [
   'judicialCountry',
   'clientRegisteredName',
   'emailAddress',
-  // 'officePhone',
+  'officePhone',
   'address',
   'emergencyContactName',
   'emergencyContactDesignation',
