@@ -23,8 +23,8 @@ export type IMultipleForm = {
   tradingCurrency: ITradingCurrencyTypes[];
   adminContactName: string;
   designation: string;
-  nameCard: string;
-  nationalID: string;
+  nameCard?: string;
+  nationalID?: string;
 
   // Step 2
   financeContactName?: string;
@@ -77,9 +77,9 @@ export type IMultipleForm = {
   shareholdersInfo16?: string;
   shareholdersRatio16?: string;
 
-  registrationDocs: string;
+  registrationDocs?: string;
   taxRegistrationNo: string;
-  travelAgentLicense: string;
+  travelAgentLicense?: string;
 
   // Step 3
   distributionMarket?: string;

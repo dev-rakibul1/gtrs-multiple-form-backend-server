@@ -68,6 +68,7 @@ const createMultipleFormService = async (
   payload: IMultipleForm,
 ): Promise<IMultipleForm> => {
   const getFormData = await MultipleForm.create(payload);
+  // console.log('multiple form create____:', payload);
   return getFormData;
 };
 
