@@ -79,12 +79,10 @@ const userInfoSchema = new mongoose_1.Schema({
     nameCard: {
         type: String,
         trim: true,
-        required: true,
     },
     nationalID: {
         type: String,
         trim: true,
-        required: true,
     },
     // Step 2
     financeContactName: {
@@ -268,7 +266,6 @@ const userInfoSchema = new mongoose_1.Schema({
     registrationDocs: {
         type: String,
         trim: true,
-        required: true,
     },
     taxRegistrationNo: {
         type: String,
@@ -278,7 +275,6 @@ const userInfoSchema = new mongoose_1.Schema({
     travelAgentLicense: {
         type: String,
         trim: true,
-        required: true,
     },
     // Step 3
     distributionMarket: {
@@ -336,6 +332,46 @@ const userInfoSchema = new mongoose_1.Schema({
     termsPolicyConsent: {
         type: Boolean,
         trim: true,
+    },
+    userTrackIp: {
+        type: {
+            country: {
+                type: String,
+                trim: true,
+                required: true,
+            },
+            city: {
+                type: String,
+                trim: true,
+                required: true,
+            },
+            ip: {
+                type: String,
+                trim: true,
+                required: true,
+            },
+            loc: {
+                type: String,
+                trim: true,
+                required: true,
+            },
+            org: {
+                type: String,
+                trim: true,
+                required: true,
+            },
+            postal: {
+                type: String,
+                trim: true,
+                required: true,
+            },
+            timezone: {
+                type: String,
+                trim: true,
+                required: true,
+            },
+        },
+        required: true, // Make the whole 'userTrackIp' object required
     },
 }, {
     timestamps: true,

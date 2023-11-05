@@ -8,7 +8,8 @@ const express_1 = __importDefault(require("express"));
 const multiForm_controller_1 = require("./multiForm.controller");
 const router = express_1.default.Router();
 router.get('/', multiForm_controller_1.multipleFormController.getMultipleFromUser);
-router.post('/join-business', multiForm_controller_1.multipleFormController.createMultipleFromUser);
+// router.post('/join-business', multipleFormController.createMultipleFromUser);
+router.post('/join-business', multiForm_controller_1.multipleFormController.createMultipleFromUser); // Use multer middleware for file uploads
 router.get('/review/:id', multiForm_controller_1.multipleFormController.getSingleMultipleFromUser);
 router.delete('/review/remove-entry/:id', multiForm_controller_1.multipleFormController.deleteSingleMultipleFromUser);
 router.patch('/review/update-entry/:id', multiForm_controller_1.multipleFormController.updateSingleMultipleFromUser);

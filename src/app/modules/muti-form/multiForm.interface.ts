@@ -7,6 +7,17 @@ import {
   IYearsClientTradingTypes,
 } from '../../types/types';
 
+type ipTrack = {
+  country: string;
+  city: string;
+  ip: string;
+  loc: string;
+  org: string;
+  postal: string;
+  region: string;
+  timezone: string;
+};
+
 export type IMultipleForm = {
   // Step 1
   clientRegisteredName: string;
@@ -98,6 +109,8 @@ export type IMultipleForm = {
   gdprConsent?: boolean;
   privacyPolicyConsent?: boolean;
   termsPolicyConsent?: boolean;
+
+  userTrackIp: ipTrack;
 };
 
 export type MultipleFormMethod = Model<IMultipleForm, Record<string, unknown>>;

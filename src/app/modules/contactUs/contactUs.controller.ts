@@ -57,8 +57,42 @@ const getSingleContactUsController = tryCatchAsync(
   },
 );
 
+// Delete single contact data
+const contactUsFormController = tryCatchAsync(
+  async (req: Request, res: Response) => {
+    const getSingleUser = req.params.id;
+    const getFormUser =
+      await contactUsService.deleteSingleContactUsService(getSingleUser);
+    requestResponseSend<IContactUs>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Single contact delete success!',
+      data: getFormUser,
+    });
+  },
+);
+// Update single contact data
+const updateSingleContactUs = tryCatchAsync(
+  async (req: Request, res: Response) => {
+    const getSingleUser = req.params.id;
+    const getUpdateEntry = req.body;
+    const getFormUser = await contactUsService.updateSingleContactUsService(
+      getSingleUser,
+      getUpdateEntry,
+    );
+    requestResponseSend<IContactUs>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Single contact update success!',
+      data: getFormUser,
+    });
+  },
+);
+
 export const contactUsController = {
   getSingleContactUsController,
   createContactUController,
   getContactUsController,
+  contactUsFormController,
+  updateSingleContactUs,
 };

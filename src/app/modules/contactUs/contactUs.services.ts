@@ -76,8 +76,49 @@ const getSingleContactUsService = async (
   return getFormData;
 };
 
+const deleteSingleContactUsService = async (
+  id: string,
+): Promise<IContactUs | null> => {
+  const isExist = await ContactUs.findById(id);
+
+  if (!isExist) {
+    const errorObject = {
+      error: true,
+      message: 'Entry not available.',
+    };
+    throw new Error(JSON.stringify(errorObject));
+  }
+
+  const getFormData = await ContactUs.findByIdAndDelete(id, {
+    new: true,
+  });
+  return getFormData;
+};
+
+const updateSingleContactUsService = async (
+  id: string,
+  payload: IContactUs,
+): Promise<IContactUs | null> => {
+  const isExist = await ContactUs.findById(id);
+
+  if (!isExist) {
+    const errorObject = {
+      error: true,
+      message: 'Entry not available.',
+    };
+    throw new Error(JSON.stringify(errorObject));
+  }
+
+  const getFormData = await ContactUs.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
+  return getFormData;
+};
+
 export const contactUsService = {
   getContactUsService,
   getSingleContactUsService,
   createContactUsService,
+  deleteSingleContactUsService,
+  updateSingleContactUsService,
 };

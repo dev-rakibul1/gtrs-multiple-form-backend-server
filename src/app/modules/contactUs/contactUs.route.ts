@@ -5,9 +5,15 @@ const router = express.Router();
 
 router.get('/', contactUsController.getContactUsController);
 router.post('/create-contact', contactUsController.createContactUController);
-router.get(
-  '/single-user/:id',
-  contactUsController.getSingleContactUsController,
+router.get('/review/:id', contactUsController.getSingleContactUsController);
+router.delete(
+  '/review/remove-entry/:id',
+  contactUsController.contactUsFormController,
+);
+
+router.patch(
+  '/review/update-entry/:id',
+  contactUsController.updateSingleContactUs,
 );
 
 export const contactUsRoute = router;
