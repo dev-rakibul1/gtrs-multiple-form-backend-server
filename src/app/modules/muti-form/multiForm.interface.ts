@@ -8,14 +8,14 @@ import {
 } from '../../types/types';
 
 type ipTrack = {
-  country: string;
-  city: string;
-  ip: string;
-  loc: string;
-  org: string;
-  postal: string;
-  region: string;
-  timezone: string;
+  country?: string;
+  city?: string;
+  ip?: string;
+  loc?: string;
+  org?: string;
+  postal?: string;
+  region?: string;
+  timezone?: string;
 };
 
 export type IMultipleForm = {

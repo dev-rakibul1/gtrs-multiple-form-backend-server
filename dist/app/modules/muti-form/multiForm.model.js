@@ -338,40 +338,33 @@ const userInfoSchema = new mongoose_1.Schema({
             country: {
                 type: String,
                 trim: true,
-                required: true,
             },
             city: {
                 type: String,
                 trim: true,
-                required: true,
             },
             ip: {
                 type: String,
                 trim: true,
-                required: true,
             },
             loc: {
                 type: String,
                 trim: true,
-                required: true,
             },
             org: {
                 type: String,
                 trim: true,
-                required: true,
             },
             postal: {
                 type: String,
                 trim: true,
-                required: true,
             },
             timezone: {
                 type: String,
                 trim: true,
-                required: true,
             },
         },
-        required: true, // Make the whole 'userTrackIp' object required
+        // required: true, // Make the whole 'userTrackIp' object required
     },
 }, {
     timestamps: true,
