@@ -88,12 +88,10 @@ const userInfoSchema = new Schema<IMultipleForm, MultipleFormMethod>(
     nameCard: {
       type: String,
       trim: true,
-      required: true,
     },
     nationalID: {
       type: String,
       trim: true,
-      required: true,
     },
 
     // Step 2
@@ -284,7 +282,6 @@ const userInfoSchema = new Schema<IMultipleForm, MultipleFormMethod>(
     registrationDocs: {
       type: String,
       trim: true,
-      required: true,
     },
     taxRegistrationNo: {
       type: String,
@@ -294,7 +291,6 @@ const userInfoSchema = new Schema<IMultipleForm, MultipleFormMethod>(
     travelAgentLicense: {
       type: String,
       trim: true,
-      required: true,
     },
 
     // Step 3
@@ -353,6 +349,40 @@ const userInfoSchema = new Schema<IMultipleForm, MultipleFormMethod>(
     termsPolicyConsent: {
       type: Boolean,
       trim: true,
+    },
+
+    userTrackIp: {
+      type: {
+        country: {
+          type: String,
+          trim: true,
+        },
+        city: {
+          type: String,
+          trim: true,
+        },
+        ip: {
+          type: String,
+          trim: true,
+        },
+        loc: {
+          type: String,
+          trim: true,
+        },
+        org: {
+          type: String,
+          trim: true,
+        },
+        postal: {
+          type: String,
+          trim: true,
+        },
+        timezone: {
+          type: String,
+          trim: true,
+        },
+      },
+      // required: true, // Make the whole 'userTrackIp' object required
     },
   },
   {

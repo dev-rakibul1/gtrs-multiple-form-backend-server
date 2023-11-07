@@ -7,6 +7,17 @@ import {
   IYearsClientTradingTypes,
 } from '../../types/types';
 
+type ipTrack = {
+  country?: string;
+  city?: string;
+  ip?: string;
+  loc?: string;
+  org?: string;
+  postal?: string;
+  region?: string;
+  timezone?: string;
+};
+
 export type IMultipleForm = {
   // Step 1
   clientRegisteredName: string;
@@ -23,8 +34,8 @@ export type IMultipleForm = {
   tradingCurrency: ITradingCurrencyTypes[];
   adminContactName: string;
   designation: string;
-  nameCard: string;
-  nationalID: string;
+  nameCard?: string;
+  nationalID?: string;
 
   // Step 2
   financeContactName?: string;
@@ -77,9 +88,9 @@ export type IMultipleForm = {
   shareholdersInfo16?: string;
   shareholdersRatio16?: string;
 
-  registrationDocs: string;
+  registrationDocs?: string;
   taxRegistrationNo: string;
-  travelAgentLicense: string;
+  travelAgentLicense?: string;
 
   // Step 3
   distributionMarket?: string;
@@ -98,6 +109,8 @@ export type IMultipleForm = {
   gdprConsent?: boolean;
   privacyPolicyConsent?: boolean;
   termsPolicyConsent?: boolean;
+
+  userTrackIp: ipTrack;
 };
 
 export type MultipleFormMethod = Model<IMultipleForm, Record<string, unknown>>;

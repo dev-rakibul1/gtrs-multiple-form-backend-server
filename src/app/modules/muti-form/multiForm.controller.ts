@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
 import { paginationSort } from '../../../shared/paginationSort';
@@ -17,7 +18,7 @@ const getMultipleFromUser = tryCatchAsync(
       paginationOptions,
     );
 
-    console.log(paginationOptions);
+    // console.log(paginationOptions);
 
     requestResponseSend<IMultipleForm[]>(res, {
       statusCode: httpStatus.OK,
@@ -29,19 +30,26 @@ const getMultipleFromUser = tryCatchAsync(
   },
 );
 
+// type UploadFiles = {
+//   nameCard?: Express.Multer.File[];
+//   nationalID?: Express.Multer.File[];
+//   registrationDocs?: Express.Multer.File[];
+//   travelAgentLicense?: Express.Multer.File[];
+// };
+
 // create user data
 const createMultipleFromUser = tryCatchAsync(
   async (req: Request, res: Response) => {
-    const getFormData = req.body;
+    const userData = req.body;
 
-    const getFormUser =
-      await multipleFormService.createMultipleFormService(getFormData);
+    const createdFormData =
+      await multipleFormService.createMultipleFormService(userData);
 
-    requestResponseSend(res, {
+    requestResponseSend<IMultipleForm>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Join with our business success!',
-      data: getFormUser,
+      data: createdFormData,
     });
   },
 );
@@ -50,7 +58,7 @@ const createMultipleFromUser = tryCatchAsync(
 const getSingleMultipleFromUser = tryCatchAsync(
   async (req: Request, res: Response) => {
     const getSingleUser = req.params.id;
-    console.log(getSingleUser);
+    // console.log(getSingleUser);
 
     const getFormUser =
       await multipleFormService.getSingleMultipleFromUserService(getSingleUser);
