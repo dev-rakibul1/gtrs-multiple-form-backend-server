@@ -31,6 +31,7 @@ const getContactUsController = tryCatchAsync(
 const createContactUController = tryCatchAsync(
   async (req: Request, res: Response) => {
     const crateUserData = req.body;
+
     const getFormUser =
       await contactUsService.createContactUsService(crateUserData);
     requestResponseSend<IContactUs>(res, {

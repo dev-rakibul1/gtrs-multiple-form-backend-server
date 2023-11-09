@@ -62,7 +62,6 @@ const getMultipleFormService = (filters, paginationOptions) => __awaiter(void 0,
 });
 const createMultipleFormService = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const getFormData = yield multiForm_model_1.default.create(payload);
-    // console.log('multiple form create____:', payload);
     return getFormData;
 });
 const getSingleMultipleFromUserService = (id) => __awaiter(void 0, void 0, void 0, function* () {

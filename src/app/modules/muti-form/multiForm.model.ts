@@ -19,7 +19,6 @@ const userInfoSchema = new Schema<IMultipleForm, MultipleFormMethod>(
     clientTradeName: {
       type: String,
       trim: true,
-      required: true,
     },
 
     emailAddress: {
