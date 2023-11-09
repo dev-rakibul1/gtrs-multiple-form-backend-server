@@ -21,7 +21,7 @@ type ipTrack = {
 export type IMultipleForm = {
   // Step 1
   clientRegisteredName: string;
-  clientTradeName: string;
+  clientTradeName?: string;
   emailAddress: string;
   address: string;
   judicialCountry: CountryType[];

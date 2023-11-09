@@ -11,7 +11,6 @@ const userInfoSchema = new mongoose_1.Schema({
     clientTradeName: {
         type: String,
         trim: true,
-        required: true,
     },
     emailAddress: {
         type: String,
