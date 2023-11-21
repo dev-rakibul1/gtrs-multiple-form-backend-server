@@ -6,7 +6,7 @@ import app from '../index';
 let server: Server;
 const databaseConnect = async (): Promise<void> => {
   try {
-    await mongoose.connect(config.database_atlas_url as string);
+    await mongoose.connect(config.database_local_url as string);
     console.info('Database is connected!');
 
     server = app.listen(config.port, () => {

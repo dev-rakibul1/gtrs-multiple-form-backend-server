@@ -1,7 +1,8 @@
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
-import router from './app/modules/applicationRouter/applicationRouter';
+import router from './app/applicationRouter/applicationRouter';
 import databaseConnect from './utils/server';
 const app = express();
 
@@ -9,6 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // application router
 app.use('/api/v1/', router);

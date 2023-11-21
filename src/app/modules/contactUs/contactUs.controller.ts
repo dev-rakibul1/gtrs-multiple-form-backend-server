@@ -10,6 +10,7 @@ import { contactUsService } from './contactUs.services';
 // get contact data
 const getContactUsController = tryCatchAsync(
   async (req: Request, res: Response) => {
+    console.log('Authorization___2:', req.headers.authorization);
     const filters = pick(req.query, ['searchTerm']);
     const paginationOptions = pick(req.query, paginationSort);
     const result = await contactUsService.getContactUsService(
