@@ -1,7 +1,7 @@
 import { SortOrder } from 'mongoose';
+import { IPaginationOptionsTypes } from '../../pagination/pagination';
+import { paginationHelper } from '../../pagination/paginationHelper';
 import { IGenericResponse, IMultipleFormFilters } from '../../types/types';
-import { IPaginationOptionsTypes } from '../pagination/pagination';
-import { paginationHelper } from '../pagination/paginationHelper';
 import { IContactUs } from './contactUs.interface';
 import { default as ContactUs } from './contactUs.model';
 
@@ -82,11 +82,7 @@ const deleteSingleContactUsService = async (
   const isExist = await ContactUs.findById(id);
 
   if (!isExist) {
-    const errorObject = {
-      error: true,
-      message: 'Entry not available.',
-    };
-    throw new Error(JSON.stringify(errorObject));
+    throw new Error('Entry not available.');
   }
 
   const getFormData = await ContactUs.findByIdAndDelete(id, {
@@ -102,11 +98,7 @@ const updateSingleContactUsService = async (
   const isExist = await ContactUs.findById(id);
 
   if (!isExist) {
-    const errorObject = {
-      error: true,
-      message: 'Entry not available.',
-    };
-    throw new Error(JSON.stringify(errorObject));
+    throw new Error('Entry not available.');
   }
 
   const getFormData = await ContactUs.findByIdAndUpdate(id, payload, {

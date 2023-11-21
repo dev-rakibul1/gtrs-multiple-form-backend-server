@@ -26,14 +26,20 @@
     "src/**/*.ts": "yarn lint-prettier"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cookie-parser": "^1.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
     "@types/multer": "^1.4.9",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "eslint": "^8.52.0",
     "express": "^4.18.2",
     "http-status": "^1.7.3",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.3",
     "multer": "^1.4.5-lts.1",
     "ts-node-dev": "^2.0.0"

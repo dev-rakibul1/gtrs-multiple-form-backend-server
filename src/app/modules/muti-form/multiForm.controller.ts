@@ -18,7 +18,7 @@ const getMultipleFromUser = tryCatchAsync(
       paginationOptions,
     );
 
-    // console.log(paginationOptions);
+    console.log(req.headers.authorization, ':________form data');
 
     requestResponseSend<IMultipleForm[]>(res, {
       statusCode: httpStatus.OK,
