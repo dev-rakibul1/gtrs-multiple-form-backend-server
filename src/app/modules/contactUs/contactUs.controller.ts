@@ -32,7 +32,7 @@ const getContactUsController = tryCatchAsync(
 const createContactUController = tryCatchAsync(
   async (req: Request, res: Response) => {
     const crateUserData = req.body;
-
+    console.log('Authorization___2:', req.headers.authorization);
     const getFormUser =
       await contactUsService.createContactUsService(crateUserData);
     requestResponseSend<IContactUs>(res, {

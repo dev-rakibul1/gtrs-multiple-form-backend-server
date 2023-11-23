@@ -10,8 +10,14 @@ const auth =
       // get authorization
       const token = req.headers.authorization;
       if (!token) {
-        throw new Error('You are not authorized!');
+        res.status(401).json({
+          status: 401,
+          message: 'Unauthorized',
+        });
       }
+
+      console.log(requireRole);
+      console.log(token);
 
       // verify token
       let verifyUser = null;
