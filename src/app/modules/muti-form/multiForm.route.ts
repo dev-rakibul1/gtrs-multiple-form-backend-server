@@ -16,16 +16,7 @@ router.get(
   multipleFormController.getMultipleFromUser,
 );
 
-router.post(
-  '/join-business',
-  auth(
-    ENUM_USER_ROLE.SUPPER_ADMIN,
-    ENUM_USER_ROLE.ADMIN,
-    ENUM_USER_ROLE.EDITOR,
-    ENUM_USER_ROLE.USER,
-  ),
-  multipleFormController.createMultipleFromUser,
-); // Use multer middleware for file uploads
+router.post('/join-business', multipleFormController.createMultipleFromUser); // Use multer middleware for file uploads
 
 router.get(
   '/review/:id',

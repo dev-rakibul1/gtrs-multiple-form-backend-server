@@ -11,18 +11,21 @@ router.get(
     ENUM_USER_ROLE.SUPPER_ADMIN,
     ENUM_USER_ROLE.ADMIN,
     ENUM_USER_ROLE.EDITOR,
+    ENUM_USER_ROLE.USER,
   ),
   userController.getUserController,
 );
 router.post(
   '/create-user',
-  auth(
-    ENUM_USER_ROLE.SUPPER_ADMIN,
-    ENUM_USER_ROLE.ADMIN,
-    ENUM_USER_ROLE.EDITOR,
-    ENUM_USER_ROLE.USER,
-  ),
+  // auth(
+  //   ENUM_USER_ROLE.SUPPER_ADMIN,
+  //   ENUM_USER_ROLE.ADMIN,
+  //   ENUM_USER_ROLE.EDITOR,
+  //   ENUM_USER_ROLE.USER,
+  // ),
   userController.createUserController,
 );
+
+router.get('/user-filter', userController.getUserFilterController);
 
 export const userRoute = router;
