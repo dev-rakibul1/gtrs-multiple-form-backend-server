@@ -3,6 +3,8 @@ import { Model, Schema, model } from 'mongoose';
 import config from '../../../config/config';
 import { IUser, UserMethod } from './user.interface';
 
+// const roleArray: roleType[] = ['user', 'editor', 'admin', 'super_admin'];
+
 const userSchema = new Schema<IUser, UserMethod>(
   {
     firstName: {
@@ -55,9 +57,14 @@ const userSchema = new Schema<IUser, UserMethod>(
       required: true,
       select: false,
     },
+    newPassword: {
+      type: String,
+      select: 0,
+    },
     profileImage: {
       type: String,
       trim: true,
+      required: true,
     },
     needPasswordChange: {
       type: Boolean,

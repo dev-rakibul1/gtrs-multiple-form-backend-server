@@ -24,7 +24,7 @@ const getMultipleFromUser = (0, tryCatchAsync_1.default)((req, res) => __awaiter
     const filters = (0, pick_1.default)(req.query, ['searchTerm']);
     const paginationOptions = (0, pick_1.default)(req.query, paginationSort_1.paginationSort);
     const result = yield multiForm_services_1.multipleFormService.getMultipleFormService(filters, paginationOptions);
-    // console.log(paginationOptions);
+    console.log(req.headers.authorization, ':________form data');
     (0, requestResponseSend_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,

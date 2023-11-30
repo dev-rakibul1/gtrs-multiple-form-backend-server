@@ -23,7 +23,7 @@ const auth =
       let verifyUser = null;
 
       verifyUser = jwtTokenProvider.verifyJwtToken(
-        token,
+        token as string,
         config.jwtAccessKey as Secret,
       );
       req.user = verifyUser;

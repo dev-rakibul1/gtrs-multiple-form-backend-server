@@ -8,7 +8,7 @@ const router = express.Router();
 router.get(
   '/',
   auth(
-    ENUM_USER_ROLE.SUPPER_ADMIN,
+    ENUM_USER_ROLE.SUPER_ADMIN,
     ENUM_USER_ROLE.ADMIN,
     ENUM_USER_ROLE.EDITOR,
     ENUM_USER_ROLE.USER,
@@ -18,7 +18,7 @@ router.get(
 router.post(
   '/create-contact',
   auth(
-    ENUM_USER_ROLE.SUPPER_ADMIN,
+    ENUM_USER_ROLE.SUPER_ADMIN,
     ENUM_USER_ROLE.ADMIN,
     ENUM_USER_ROLE.EDITOR,
     ENUM_USER_ROLE.USER,
@@ -28,7 +28,7 @@ router.post(
 router.get(
   '/review-contact-us/:id',
   auth(
-    ENUM_USER_ROLE.SUPPER_ADMIN,
+    ENUM_USER_ROLE.SUPER_ADMIN,
     ENUM_USER_ROLE.ADMIN,
     ENUM_USER_ROLE.EDITOR,
     ENUM_USER_ROLE.USER,
@@ -37,17 +37,13 @@ router.get(
 );
 router.delete(
   '/review-contact-us/remove-entry/:id',
-  auth(ENUM_USER_ROLE.SUPPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   contactUsController.contactUsFormController,
 );
 
 router.patch(
   '/review-contact-us/update-entry/:id',
-  auth(
-    ENUM_USER_ROLE.SUPPER_ADMIN,
-    ENUM_USER_ROLE.ADMIN,
-    ENUM_USER_ROLE.EDITOR,
-  ),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.EDITOR),
   contactUsController.updateSingleContactUs,
 );
 

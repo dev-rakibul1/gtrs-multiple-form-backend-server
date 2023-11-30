@@ -29,10 +29,7 @@ const loginUserService = async (
 
   // console.log(isEmailExist);
   // password match
-  const isPasswordMatch = await bcrypt.compare(
-    password,
-    isEmailExist?.password,
-  );
+  const isPasswordMatch = bcrypt.compare(password, isEmailExist.password!);
 
   if (!isPasswordMatch) {
     throw new Error('Password does not match.');
@@ -108,7 +105,43 @@ const refreshTokenService = async (token: string): Promise<IRefreshToken> => {
   };
 };
 
+// Logout route
+// const logoutService = async (
+//   token: string | undefined,
+// ): Promise<IUser | null> => {
+//   if (!token) {
+//     throw new Error('Token not found.');
+//   }
+
+//   // token verify
+//   const decoded = jwtTokenProvider.verifyJwtToken(
+//     token,
+//     config.jwtRefreshKey as Secret,
+//   );
+//   console.log('Token:', token, 'decoded', decoded);
+
+//   if (!decoded || !decoded.email) {
+//     throw new Error('Invalid token');
+//   }
+
+//   const email = decoded.email;
+
+//   // Example: Mark the user's refresh token as revoked in the database
+//   const updatedUser = await User.findOneAndUpdate(
+//     { email },
+//     { $set: { revokedRefreshToken: true } },
+//     { new: true },
+//   );
+
+//   if (!updatedUser) {
+//     throw new Error('User not found.');
+//   }
+
+//   return updatedUser;
+// };
+
 export const authService = {
   loginUserService,
   refreshTokenService,
+  // logoutService,
 };

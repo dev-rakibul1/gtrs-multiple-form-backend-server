@@ -81,6 +81,8 @@ export type ITradingCurrencyTypes =
   | 'xof'
   | 'other';
 
+export type roleType = 'user' | 'editor' | 'admin' | 'super_admin';
+
 export type CountryType =
   | 'afghanistan af'
   | 'albania al'

@@ -51,7 +51,32 @@ const refreshToken = tryCatchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const logoutToken = tryCatchAsync(async (req: Request, res: Response) => {
+  // const { refreshToken } = req.cookies;
+  // const refreshToken = req.cookies.authorization;
+
+  // console.log('refreshToken_____Token: ', refreshToken);
+
+  // const result = await authService.logoutService(refreshToken);
+
+  // const result = await
+  res.clearCookie('refreshToken', {
+    /* cookie options */
+  });
+  res.clearCookie('accessToken', {
+    /* cookie options */
+  });
+
+  requestResponseSend(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Logout successfully!',
+    data: null,
+  });
+});
+
 export const loginController = {
   authLogin,
   refreshToken,
+  logoutToken,
 };
