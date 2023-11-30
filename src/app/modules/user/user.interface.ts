@@ -7,8 +7,9 @@ export type IUser = {
   email: string;
   phone: string;
   password: string;
-  profileImage?: string;
+  profileImage: string;
   needPasswordChange: boolean;
+  newPassword?: string;
 };
 
 export type IUserMethods = {

@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.contactUsService = void 0;
-const paginationHelper_1 = require("../pagination/paginationHelper");
+const paginationHelper_1 = require("../../pagination/paginationHelper");
 const contactUs_model_1 = __importDefault(require("./contactUs.model"));
 const contactUsFilterFieldsName = [
     'firstName',
@@ -69,11 +69,7 @@ const getSingleContactUsService = (id) => __awaiter(void 0, void 0, void 0, func
 const deleteSingleContactUsService = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const isExist = yield contactUs_model_1.default.findById(id);
     if (!isExist) {
-        const errorObject = {
-            error: true,
-            message: 'Entry not available.',
-        };
-        throw new Error(JSON.stringify(errorObject));
+        throw new Error('Entry not available.');
     }
     const getFormData = yield contactUs_model_1.default.findByIdAndDelete(id, {
         new: true,
@@ -83,11 +79,7 @@ const deleteSingleContactUsService = (id) => __awaiter(void 0, void 0, void 0, f
 const updateSingleContactUsService = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
     const isExist = yield contactUs_model_1.default.findById(id);
     if (!isExist) {
-        const errorObject = {
-            error: true,
-            message: 'Entry not available.',
-        };
-        throw new Error(JSON.stringify(errorObject));
+        throw new Error('Entry not available.');
     }
     const getFormData = yield contactUs_model_1.default.findByIdAndUpdate(id, payload, {
         new: true,

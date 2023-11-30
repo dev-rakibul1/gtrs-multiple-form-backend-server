@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import httpStatus from 'http-status';
-import jwt from 'jsonwebtoken';
 import requestResponseSend from '../../../shared/requestResponseSend';
 import tryCatchAsync from '../../../shared/tryCatchAsync';
 import { IUser } from './user.interface';
@@ -23,10 +22,11 @@ const createUserController = tryCatchAsync(
   async (req: Request, res: Response) => {
     const user = req.body;
     const result = await userServices.createUserService(user);
-    console.log('Authorization___2:', req.headers.authorization);
+
+    // console.log('Authorization___2:', req.headers.authorization);
     // console.log('Cookies___:', req.cookies);
 
-    requestResponseSend(res, {
+    requestResponseSend<IUser>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'User create success!',
@@ -37,24 +37,16 @@ const createUserController = tryCatchAsync(
 
 const getUserFilterController = tryCatchAsync(
   async (req: Request, res: Response) => {
-    const token = req.headers.authorization;
-    if (!token) {
-      res.status(401).json({
-        status: 401,
-        message: 'Unauthorized',
-      });
-    }
+    const token = req.headers.authorization
+      ? req.headers.authorization
+      : undefined;
 
-    // Decoding the JWT payload
-    const decodedPayload = jwt.decode(token!);
+    console.log('user.controller__:', token);
 
-    // Extracting user email
-    const userEmail = decodedPayload ? decodedPayload.email : null;
-    console.log('userEmail___:', userEmail);
+    const result = await userServices.getUserFilterService(token);
+    // console.log(result);
 
-    const result = await userServices.getUserFilterService(userEmail);
-
-    console.log('Authorization___2:', req.headers.authorization);
+    // console.log('Authorization___2:', req.headers.authorization);
     // console.log('Cookies___:', req.cookies);
 
     requestResponseSend(res, {
@@ -66,8 +58,64 @@ const getUserFilterController = tryCatchAsync(
   },
 );
 
+// Get single user
+const getSingleUserController = tryCatchAsync(
+  async (req: Request, res: Response) => {
+    const getSingleUser = req.params.id;
+    const getFormUser = await userServices.getSingleUserService(getSingleUser);
+
+    requestResponseSend<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Single user get success!',
+      data: getFormUser,
+    });
+  },
+);
+
+// Update single user
+const editSingleUserController = tryCatchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const getSingleUser = req.body;
+    const getFormUser = await userServices.updateSingleUserService(
+      id,
+      getSingleUser,
+    );
+
+    requestResponseSend<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Update single user success!',
+      data: getFormUser,
+    });
+  },
+);
+
+// Update single user
+const passwordChangeController = tryCatchAsync(
+  async (req: Request, res: Response) => {
+    const id = req.params.id;
+    const userPassword = req.body;
+    const getFormUser = await userServices.passwordChangeService(
+      id,
+      userPassword,
+    );
+
+    requestResponseSend<IUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Password change success!',
+      data: getFormUser,
+    });
+  },
+);
+
 export const userController = {
   getUserController,
   createUserController,
   getUserFilterController,
+  getSingleUserController,
+  editSingleUserController,
+  passwordChangeController,
 };

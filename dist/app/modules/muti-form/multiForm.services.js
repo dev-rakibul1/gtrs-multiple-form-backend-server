@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.multipleFormService = void 0;
-const paginationHelper_1 = require("../pagination/paginationHelper");
+const paginationHelper_1 = require("../../pagination/paginationHelper");
 const multiForm_constant_1 = require("./multiForm.constant");
 const multiForm_model_1 = __importDefault(require("./multiForm.model"));
 const getMultipleFormService = (filters, paginationOptions) => __awaiter(void 0, void 0, void 0, function* () {

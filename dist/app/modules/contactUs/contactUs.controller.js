@@ -21,6 +21,7 @@ const tryCatchAsync_1 = __importDefault(require("../../../shared/tryCatchAsync")
 const contactUs_services_1 = require("./contactUs.services");
 // get contact data
 const getContactUsController = (0, tryCatchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('Authorization___2:', req.headers.authorization);
     const filters = (0, pick_1.default)(req.query, ['searchTerm']);
     const paginationOptions = (0, pick_1.default)(req.query, paginationSort_1.paginationSort);
     const result = yield contactUs_services_1.contactUsService.getContactUsService(filters, paginationOptions);
@@ -35,6 +36,7 @@ const getContactUsController = (0, tryCatchAsync_1.default)((req, res) => __awai
 // Create contact data
 const createContactUController = (0, tryCatchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const crateUserData = req.body;
+    console.log('Authorization___2:', req.headers.authorization);
     const getFormUser = yield contactUs_services_1.contactUsService.createContactUsService(crateUserData);
     (0, requestResponseSend_1.default)(res, {
         statusCode: http_status_1.default.OK,

@@ -8,7 +8,7 @@ const router = express.Router();
 router.get(
   '/',
   auth(
-    ENUM_USER_ROLE.SUPPER_ADMIN,
+    ENUM_USER_ROLE.SUPER_ADMIN,
     ENUM_USER_ROLE.ADMIN,
     ENUM_USER_ROLE.EDITOR,
     ENUM_USER_ROLE.USER,
@@ -21,7 +21,7 @@ router.post('/join-business', multipleFormController.createMultipleFromUser); //
 router.get(
   '/review/:id',
   auth(
-    ENUM_USER_ROLE.SUPPER_ADMIN,
+    ENUM_USER_ROLE.SUPER_ADMIN,
     ENUM_USER_ROLE.ADMIN,
     ENUM_USER_ROLE.EDITOR,
     ENUM_USER_ROLE.USER,
@@ -30,16 +30,12 @@ router.get(
 );
 router.delete(
   '/review/remove-entry/:id',
-  auth(ENUM_USER_ROLE.SUPPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   multipleFormController.deleteSingleMultipleFromUser,
 );
 router.patch(
   '/review/update-entry/:id',
-  auth(
-    ENUM_USER_ROLE.SUPPER_ADMIN,
-    ENUM_USER_ROLE.ADMIN,
-    ENUM_USER_ROLE.EDITOR,
-  ),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.EDITOR),
   multipleFormController.updateSingleMultipleFromUser,
 );
 
